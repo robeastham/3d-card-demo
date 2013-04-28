@@ -57,18 +57,16 @@ flipper.click(function() {
         cardBack.css({ 'z-index' : 1 });
     }
 
-    card.css({ transformOrigin : '25% 50%'});
-
     if (card.hasClass('flipped')) {
 
     card.transition({
             perspective: '1000px',
             rotateY: '90deg'
-        }, 800, 'linear', showFront)
+        }, 500, 'linear', showFront)
         .transition({
             perspective: '1000px',
             rotateY: '0deg'
-        }, 800, 'linear')
+        }, 500, 'linear')
         .removeClass('flipped');
 
     } else {
@@ -76,11 +74,11 @@ flipper.click(function() {
     card.transition({
             perspective: '1000px',
             rotateY: '90deg'
-        }, 800, 'linear', showBack)
+        }, 500, 'linear', showBack)
         .transition({
             perspective: '1000px',
             rotateY: '180deg'
-        }, 800, 'linear')
+        }, 500, 'linear')
         .addClass('flipped');
 
     }
