@@ -3,10 +3,36 @@ var uA = navigator.userAgent,
     cardFront = $('#card #front'),
     cardBack = $('#card #back'),
     flipper = $('#flipper'),
-    port = $(window),
-    portHeight = port.height(),
-    portWidth = port.width();
+    port = $(window);
 // end global variables
+
+// global functions
+function foldCard() {
+    cardBack.css({ transformOrigin : '0px 0px' })
+            .transition({
+                perspective: '800px',
+                rotateY: '180deg'
+            }, 0, 'linear');
+}
+
+function resizeCard() {
+    var cardHeight = card.height(),
+        cardWidth = card.width(),
+        portHeight = port.height(),
+        portWidth = port.width();
+
+    console.log('resizeCard! cardHeight = ' + cardHeight);
+}
+// end global functions
+
+// keep card sized
+$(document).ready(function() {
+    resizeCard();
+});
+$(window).resize(function() {
+    resizeCard();
+});
+
 
 // start QAD browser detection
 if (uA.match(/Firefox\/.*/)) {
@@ -34,17 +60,9 @@ if (uA.match(/Firefox\/.*/)) {
 console.log('navigator.useragent = ' + uA);
 // end browser detection
 
-
-function foldCard() {
-    $('#card #back').css({ transformOrigin : '0px 0px' })
-        .transition({
-            perspective: '800px',
-            rotateY: '180deg'
-        }, 1, 'linear')
-}
-
-    foldCard(),
-    card.transition({ 'opacity' : 1 }, 500, 'linear');
+foldCard(),
+card.css({ transformOrigin : '25%' }) // for flipping
+    .transition({ opacity : 1 }, 1500, 'linear');
 
 flipper.click(function() {
 
