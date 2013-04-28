@@ -3,39 +3,18 @@
 /* */
 
 /* layout */
-html, body, div.wrapper {
+html, body, div.wrapper, div.body {
     height:100%;
+    width:100%;
     overflow:hidden;
 }
 body {
     background:#333;
+    padding:0;
 }
 div {
     margin:0;
     padding:0;
-}
-
-div.header,
-div.body,
-div.footer {
-    padding:10px;
-}
-div.header,
-div.footer {
-    display:block;
-    width:100%;
-    position:absolute;
-}
-div.header {
-    top:0px;
-}
-div.body {
-    position:relative;
-    top:80px;
-    min-height:400px;
-}
-div.footer {
-    bottom:0px;
 }
 /* */
 

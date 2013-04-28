@@ -20,23 +20,10 @@ if (uA.match(/Firefox\/.*/)) {
 } else if (uA.match(/MSIE 9\.0.*/)) {
     $('body').addClass('ie9');
 } else if (uA.match(/MSIE 8\.0.*/)) {
-    $('body').addClass('ie8');8
+    $('body').addClass('ie8');
 } else if (uA.match(/MSIE 7\.0.*/)) {
     $('body').addClass('ie7');
 }
 
 console.log('navigator.useragent = ' + uA);
 // end browser detection
-
-// activator
-activator.hover(function() {
-    $(this).transition({
-        width: +500,
-        x: '-250px'
-    })
-
-});
-
-activator.mouseleave(function() {
-
-});
