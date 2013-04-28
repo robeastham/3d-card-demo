@@ -33,13 +33,18 @@ if (uA.match(/Firefox\/.*/)) {
 
 console.log('navigator.useragent = ' + uA);
 // end browser detection
-flipper.click(function() {
+
+
+function foldCard() {
     $('#card #back').css({ transformOrigin : '0px 0px' })
         .transition({
             perspective: '800px',
             rotateY: '180deg'
-        }, 1500, 'linear')
-});
+        }, 1, 'linear')
+}
+
+    foldCard(),
+    card.transition({ 'opacity' : 1 }, 500, 'linear');
 
 $('#flipper2').click(function() {
 

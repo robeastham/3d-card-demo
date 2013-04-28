@@ -29,6 +29,7 @@ h1 {
 #card {
     display:inline-block;
     margin:40px;
+    opacity:0;
 }
 #card #front,
 #card #back {
