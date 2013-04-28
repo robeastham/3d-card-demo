@@ -34,12 +34,14 @@ h1 {
     display:inline-block;
     margin:60px;
     opacity:0;
+    min-width:400px;
+    min-height:200px;
 }
 #card #front,
 #card #back {
     background:#fff;
-    width:400px;
-    height:200px;
+    min-width:400px;
+    min-height:200px;
     display:inline-block;
     position:relative;
     border-radius:5px;
