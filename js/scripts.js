@@ -1,5 +1,8 @@
 var uA = navigator.userAgent,
-    activator = $('#activator');
+    card = $('#card'),
+    port = $(window),
+    portHeight = port.height(),
+    portWidth = port.width();
 // end global variables
 
 // start QAD browser detection
