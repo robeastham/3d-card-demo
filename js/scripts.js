@@ -46,7 +46,7 @@ function foldCard() {
     foldCard(),
     card.transition({ 'opacity' : 1 }, 500, 'linear');
 
-$('#flipper2').click(function() {
+flipper.click(function() {
 
     function showFront() {
         cardFront.css({ 'z-index' : 1 }),
