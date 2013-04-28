@@ -21,7 +21,7 @@ function resizeCard() {
         portHeight = port.height(),
         portWidth = port.width();
 
-    console.log('resizeCard! cardHeight = ' + cardHeight);
+    console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
 }
 // end global functions
 
