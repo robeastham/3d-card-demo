@@ -34,7 +34,7 @@ if (uA.match(/Firefox\/.*/)) {
 console.log('navigator.useragent = ' + uA);
 // end browser detection
 flipper.click(function() {
-    $('#card #back').css({ transformOrigin: '0px 0px' })
+    $('#card #back').css({ transformOrigin : '0px 0px' })
         .transition({
             perspective: '800px',
             rotateY: '180deg'
@@ -51,6 +51,8 @@ $('#flipper2').click(function() {
         cardFront.css({ 'z-index' : 0 }),
         cardBack.css({ 'z-index' : 1 });
     }
+
+    card.css({ transformOrigin : '25% 50%'});
 
     if (card.hasClass('flipped')) {
 
@@ -75,5 +77,6 @@ $('#flipper2').click(function() {
             rotateY: '180deg'
         }, 800, 'linear')
         .addClass('flipped');
+
     }
 });
