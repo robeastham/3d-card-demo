@@ -9,12 +9,16 @@ html, body, div.wrapper, div.body {
     overflow:hidden;
 }
 body {
-    background:#333;
     padding:0;
 }
 div {
     margin:0;
     padding:0;
+    background:transparent;
+}
+div.wrapper {
+    background:url(../img/hubble-deep-field.jpg) 0 0 no-repeat;
+    background-size:100%;
 }
 /* */
 
