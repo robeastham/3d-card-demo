@@ -1,5 +1,6 @@
 var uA = navigator.userAgent,
     card = $('#card'),
+    flipper = $('#flipper'),
     port = $(window),
     portHeight = port.height(),
     portWidth = port.width();
@@ -30,3 +31,22 @@ if (uA.match(/Firefox\/.*/)) {
 
 console.log('navigator.useragent = ' + uA);
 // end browser detection
+
+flipper.click(function() {
+
+    if (card.hasClass('flipped')) {
+
+        card.transition({
+            perspective: '800px',
+            rotateY: '0deg'
+
+        }, 1500, 'linear').removeClass('flipped');
+
+    } else {
+
+        card.transition({
+            perspective: '800px',
+            rotateY: '180deg'
+        }, 1500, 'linear').addClass('flipped');
+    }
+});
