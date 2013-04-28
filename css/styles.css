@@ -17,7 +17,7 @@ div {
     background:transparent;
 }
 div.wrapper {
-    background:url(../img/hubble-deep-field.jpg) 0 0 no-repeat;
+    background:#333;
     background-size:100%;
 }
 /* */
