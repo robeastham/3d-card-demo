@@ -1,5 +1,7 @@
 var uA = navigator.userAgent,
     card = $('#card'),
+    cardFront = $('#card #front'),
+    cardBack = $('#card #back'),
     flipper = $('#flipper'),
     port = $(window),
     portHeight = port.height(),
@@ -31,22 +33,47 @@ if (uA.match(/Firefox\/.*/)) {
 
 console.log('navigator.useragent = ' + uA);
 // end browser detection
-
 flipper.click(function() {
+    $('#card #back').css({ transformOrigin: '0px 0px' })
+        .transition({
+            perspective: '800px',
+            rotateY: '180deg'
+        }, 1500, 'linear')
+});
+
+$('#flipper2').click(function() {
+
+    function showFront() {
+        cardFront.css({ 'z-index' : 1 }),
+        cardBack.css({ 'z-index' : 0 });
+    }
+    function showBack() {
+        cardFront.css({ 'z-index' : 0 }),
+        cardBack.css({ 'z-index' : 1 });
+    }
 
     if (card.hasClass('flipped')) {
 
-        card.transition({
-            perspective: '800px',
+    card.transition({
+            perspective: '1000px',
+            rotateY: '90deg'
+        }, 800, 'linear', showFront)
+        .transition({
+            perspective: '1000px',
             rotateY: '0deg'
-
-        }, 1500, 'linear').removeClass('flipped');
+        }, 800, 'linear')
+        .removeClass('flipped');
 
     } else {
 
-        card.transition({
-            perspective: '800px',
+    card.transition({
+            perspective: '1000px',
+            rotateY: '90deg'
+        }, 800, 'linear', showBack)
+        .transition({
+            perspective: '1000px',
             rotateY: '180deg'
-        }, 1500, 'linear').addClass('flipped');
+        }, 800, 'linear')
+        .addClass('flipped');
     }
 });
