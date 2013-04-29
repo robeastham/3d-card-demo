@@ -13,7 +13,7 @@ div {
     background:transparent;
 }
 div.wrapper {
-    background:#333;
+    background:#999;
     background-size:100%;
 }
 /* */
@@ -26,7 +26,14 @@ h1 {
 /* */
 
 /* card effects */
-#card, div.content {
+#card > div {
+   -moz-box-sizing:    border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
+    border-left:#333300 2px solid;
+    border-bottom:#333300 1px solid;
+}
+#card, .content {
     display:inline-block;
     opacity:0;
     min-width:804px;
@@ -40,7 +47,8 @@ h1 {
     user-select: none;
 }
 #card #front,
-#card #back {
+#card #back,
+.content {
     background:#fff;
     min-width:400px;
     min-height:200px;
@@ -50,13 +58,26 @@ h1 {
 }
 #card #front {
     z-index:1;
+    background:url(../img/paper-texture.jpg) 0 0 no-repeat;
 }
 #card #back {
     z-index:0;
     right:4px;
+    background:url(../img/paper-texture.jpg) 0 0 no-repeat;
 }
 .content {
-    background:#cc333c;
+    background:transparent;
     z-index:3;
+    position:relative;
+    opacity:1;
+}
+.content p {
+    display:inline;
+    color:#fff;
+}
+.content.overlay {
+    z-index:4;
+    background:#ccc333;
+    opacity:0;
 }
 /* */

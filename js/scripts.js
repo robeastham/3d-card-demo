@@ -7,28 +7,28 @@ var uA = navigator.userAgent,
 // end global variables
 
 // start QAD browser detection
-if (uA.match(/Firefox\/.*/)) {
-    $('body').addClass('firefox');
-} else if (uA.match(/Mozilla\/.*Fennec.*/)) {
-    $('body').addClass('firefox mobile');
-} else if (uA.match(/Chrome\/.*/)) {
-    $('body').addClass('chrome');
-} else if (uA.match(/Chrome\/.*Mobile.*/)) {
-    $('body').addClass('chrome mobile');
-} else if (uA.match(/Safari\/.*/)) {
-    $('body').addClass('safari');
-} else if (uA.match(/.*iPhone\/.*/)) {
-    $('body').addClass('safari mobile iphone');
-} else if (uA.match(/iPad\/.*/)) {
-    $('body').addClass('safari mobile ipad');
-} else if (uA.match(/MSIE 9\.0.*/)) {
-    $('body').addClass('ie9');
-} else if (uA.match(/MSIE 8\.0.*/)) {
-    $('body').addClass('ie8');
-} else if (uA.match(/MSIE 7\.0.*/)) {
-    $('body').addClass('ie7');
-}
-console.log('navigator.useragent = ' + uA);
+    if (uA.match(/Firefox\/.*/)) {
+        $('body').addClass('firefox');
+    } else if (uA.match(/Mozilla\/.*Fennec.*/)) {
+        $('body').addClass('firefox mobile');
+    } else if (uA.match(/Chrome\/.*/)) {
+        $('body').addClass('chrome');
+    } else if (uA.match(/Chrome\/.*Mobile.*/)) {
+        $('body').addClass('chrome mobile');
+    } else if (uA.match(/Safari\/.*/)) {
+        $('body').addClass('safari');
+    } else if (uA.match(/.*iPhone\/.*/)) {
+        $('body').addClass('safari mobile iphone');
+    } else if (uA.match(/iPad\/.*/)) {
+        $('body').addClass('safari mobile ipad');
+    } else if (uA.match(/MSIE 9\.0.*/)) {
+        $('body').addClass('ie9');
+    } else if (uA.match(/MSIE 8\.0.*/)) {
+        $('body').addClass('ie8');
+    } else if (uA.match(/MSIE 7\.0.*/)) {
+        $('body').addClass('ie7');
+    }
+    console.log('navigator.useragent = ' + uA);
 // end browser detection
 
 // global functions
@@ -47,7 +47,6 @@ function resizeCard() {
         minCardWidth  = 400, // set min width for later calculations
         cardHeight = (card.height()),
         cardWidth = (card.width() / 2), // card.width is actually front + back
-        cardOffset = $('#card #front').offset(), // find coord's of card
         portHeight = port.height(), // browser height
         portWidth = port.width(); // browser width
 
@@ -57,43 +56,53 @@ function resizeCard() {
             marginTop : bufferTop,
             marginLeft : bufferLeft
         }),
-        $('.content').css({ // position and shape content overlays
-            marginTop : bufferTop,
-            marginLeft : bufferLeft,
+
+        cardOffset = $('#card #front').offset(), // find coord's of card
+
+        $('.content').css({ // position and shape content
+            display : 'inline-block',
             position : 'absolute',
-            left : cardOffset.left - 5,
+            left : cardOffset.left - 6,
             top : cardOffset.top,
-            opacity : 1
+            width : cardWidth + 5
         }),
+        $('.overlay').fadeOut(),
 
-    console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
-}
-function positionContents() {
+        $('.content').hide(),
 
+        console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
 }
 // end global functions
 
 // keep card sized
-$(document).ready(function() {
-    resizeCard();
-});
-//$(window).resize(function() {
-//    resizeCard();
-//});
-
+$(document).ready(function() { resizeCard(); });
+$(window).resize(function() { resizeCard(); });
 
 foldCard(), // fold cardBack against
 card.css({ transformOrigin : '25%' }) // set origin for flip animation
     .transition({ opacity : 1 }, 1500, 'linear'); // fade in
 
-card.click(function() {
+$('.body').click(function() {
+
+    function showFrontContent() {
+        $('.back.content').css({ 'z-index' : 0 }),
+        $('.front.content').css({ 'z-index' : 2 }),
+        console.log('frontcontent shown');
+    }
     function showFront() {
         cardFront.css({ 'z-index' : 1 }),
-        cardBack.css({ 'z-index' : 0 });
+        cardBack.css({ 'z-index' : 0 }),
+        showFrontContent();
+    }
+    function showBackContent() {
+        $('.front.content').css({ 'z-index' : 0 }),
+        $('.back.content').css({ 'z-index' : 2 }),
+        console.log('backcontent shown');
     }
     function showBack() {
         cardFront.css({ 'z-index' : 0 }),
-        cardBack.css({ 'z-index' : 1 });
+        cardBack.css({ 'z-index' : 1 }),
+        showBackContent();
     }
 
     if (card.hasClass('flipped')) {
