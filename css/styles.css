@@ -1,7 +1,3 @@
-/* colors */
-
-/* */
-
 /* layout */
 html, body, div.wrapper, div.body {
     height:100%;
@@ -32,10 +28,16 @@ h1 {
 /* card effects */
 #card {
     display:inline-block;
-    margin:60px;
     opacity:0;
     min-width:804px;
     min-height:200px;
+    /* make the card un-selectable */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #card #front,
 #card #back {

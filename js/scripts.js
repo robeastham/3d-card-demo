@@ -16,10 +16,21 @@ function foldCard() {
 }
 
 function resizeCard() {
-    var cardHeight = card.height(),
-        cardWidth = card.width(),
+    var minPortHeight = 320,
+        minPortWidth = 460,
+        minCardHeight = 200,
+        minCardWidth  = 400,
+        cardHeight = (card.height() / 2),
+        cardWidth = (card.width() / 2),
         portHeight = port.height(),
         portWidth = port.width();
+
+        bufferTop = (portHeight - cardHeight) / 3,
+        bufferLeft = (portWidth - cardWidth) / 2,
+        card.css({
+            marginTop : bufferTop,
+            marginLeft : bufferLeft
+        }),
 
     console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
 }
@@ -64,7 +75,7 @@ foldCard(),
 card.css({ transformOrigin : '25%' }) // for flipping
     .transition({ opacity : 1 }, 1500, 'linear');
 
-flipper.click(function() {
+card.click(function() {
 
     function showFront() {
         cardFront.css({ 'z-index' : 1 }),
