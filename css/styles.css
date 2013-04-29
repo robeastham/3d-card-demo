@@ -56,6 +56,9 @@ h1 {
     position:relative;
     border-radius:5px;
 }
+#card #front, #card #back {
+    position:absolute;
+}
 #card #front {
     z-index:1;
     background:url(../img/paper-texture.jpg) 0 0 no-repeat;
