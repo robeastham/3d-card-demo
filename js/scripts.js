@@ -16,14 +16,15 @@ function foldCard() {
 }
 
 function resizeCard() {
-    var minPortHeight = 320,
-        minPortWidth = 460,
-        minCardHeight = 200,
-        minCardWidth  = 400,
-        cardHeight = (card.height() / 2),
-        cardWidth = (card.width() / 2),
-        portHeight = port.height(),
-        portWidth = port.width();
+    var minPortHeight = 320, // iOS height
+        minPortWidth = 460, // iOS width
+        minCardHeight = 200, // set min height for later calculations
+        minCardWidth  = 400, // set min width for later calculations
+        cardHeight = (card.height()),
+        cardWidth = (card.width() / 2), // card.width is actually front + back
+        cardOffset = $('#card #front').offset(), // find coord's of card
+        portHeight = port.height(), // browser height
+        portWidth = port.width(); // browser width
 
         bufferTop = (portHeight - cardHeight) / 3,
         bufferLeft = (portWidth - cardWidth) / 2,
@@ -31,8 +32,19 @@ function resizeCard() {
             marginTop : bufferTop,
             marginLeft : bufferLeft
         }),
+        $('.content').css({ // position and shape content overlays
+            marginTop : bufferTop,
+            marginLeft : bufferLeft,
+            position : 'absolute',
+            left : cardOffset.left - 5,
+            top : cardOffset.top,
+            opacity : 1
+        }),
 
     console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
+}
+function positionContents() {
+
 }
 // end global functions
 
@@ -40,43 +52,16 @@ function resizeCard() {
 $(document).ready(function() {
     resizeCard();
 });
-$(window).resize(function() {
-    resizeCard();
-});
+//$(window).resize(function() {
+//    resizeCard();
+//});
 
 
-// start QAD browser detection
-if (uA.match(/Firefox\/.*/)) {
-    $('body').addClass('firefox');
-} else if (uA.match(/Mozilla\/.*Fennec.*/)) {
-    $('body').addClass('firefox mobile');
-} else if (uA.match(/Chrome\/.*/)) {
-    $('body').addClass('chrome');
-} else if (uA.match(/Chrome\/.*Mobile.*/)) {
-    $('body').addClass('chrome mobile');
-} else if (uA.match(/Safari\/.*/)) {
-    $('body').addClass('safari');
-} else if (uA.match(/.*iPhone\/.*/)) {
-    $('body').addClass('safari mobile iphone');
-} else if (uA.match(/iPad\/.*/)) {
-    $('body').addClass('safari mobile ipad');
-} else if (uA.match(/MSIE 9\.0.*/)) {
-    $('body').addClass('ie9');
-} else if (uA.match(/MSIE 8\.0.*/)) {
-    $('body').addClass('ie8');
-} else if (uA.match(/MSIE 7\.0.*/)) {
-    $('body').addClass('ie7');
-}
-
-console.log('navigator.useragent = ' + uA);
-// end browser detection
-
-foldCard(),
-card.css({ transformOrigin : '25%' }) // for flipping
-    .transition({ opacity : 1 }, 1500, 'linear');
+foldCard(), // fold cardBack against
+card.css({ transformOrigin : '25%' }) // set origin for flip animation
+    .transition({ opacity : 1 }, 1500, 'linear'); // fade in
 
 card.click(function() {
-
     function showFront() {
         cardFront.css({ 'z-index' : 1 }),
         cardBack.css({ 'z-index' : 0 });
@@ -87,28 +72,24 @@ card.click(function() {
     }
 
     if (card.hasClass('flipped')) {
-
-    card.transition({
-            perspective: '1000px',
-            rotateY: '90deg'
-        }, 500, 'linear', showFront)
-        .transition({
-            perspective: '1000px',
-            rotateY: '0deg'
-        }, 500, 'linear')
-        .removeClass('flipped');
-
+        card.transition({ // back-to-front flip
+                perspective: '1000px',
+                rotateY: '90deg'
+            }, 500, 'linear', showFront)
+            .transition({
+                perspective: '1000px',
+                rotateY: '0deg'
+            }, 500, 'linear')
+            .removeClass('flipped');
     } else {
-
-    card.transition({
-            perspective: '1000px',
-            rotateY: '90deg'
-        }, 500, 'linear', showBack)
-        .transition({
-            perspective: '1000px',
-            rotateY: '180deg'
-        }, 500, 'linear')
-        .addClass('flipped');
-
+        card.transition({ // front-to-back flip
+                perspective: '1000px',
+                rotateY: '90deg'
+            }, 500, 'linear', showBack)
+            .transition({
+                perspective: '1000px',
+                rotateY: '180deg'
+            }, 500, 'linear')
+            .addClass('flipped');
     }
 });
