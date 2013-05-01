@@ -1,115 +1,119 @@
 /* layout */
-html, body, div.wrapper, div.body {
-    height:100%;
-    width:100%;
-    overflow:hidden;
-}
-body {
-    padding:0;
-    background:#111;
-}
-div {
-    margin:0;
-    padding:0;
-    background:transparent;
-}
-div.wrapper {
-    background:url(../img/fiber.png) 0 0 repeat;
-    background-size:100%;
-}
+    html, body, div.wrapper, div.body {
+        height:100%;
+        width:100%;
+        overflow:hidden;
+    }
+    body {
+        padding:0;
+        background:#111;
+    }
+    div {
+        margin:0;
+        padding:0;
+        background:transparent;
+    }
+    div.wrapper {
+        background:url(../img/fiber.png) 0 0 repeat;
+        background-size:100%;
+    }
 /* */
 
-/* text */
-h1 {
-    margin:0;
-    padding:0;
-}
+/* card */
+    #card > div {
+       -moz-box-sizing:    border-box;
+       -webkit-box-sizing: border-box;
+        box-sizing:        border-box;
+        border-left:#333300 2px solid;
+        border-bottom:#333300 1px solid;
+    }
+    #card {
+        display:inline-block;
+        min-width:804px;
+        min-height:200px;
+    }
+    #card #front,
+    #card #back {
+        background:#fff;
+        min-width:400px;
+        min-height:200px;
+        display:inline-block;
+        position:relative;
+        border-radius:4px;
+    }
+    #card #front, #card #back {
+        position:absolute;
+    }
+    #card #front {
+        z-index:1;
+        background:url(../img/paper-texture.png) 0 0 no-repeat;
+    }
+    #card #back {
+        z-index:0;
+        right:4px;
+        background:url(../img/paper-texture.png) 0 0 no-repeat;
+    }
 /* */
 
-/* card effects */
-#card > div {
-   -moz-box-sizing:    border-box;
-   -webkit-box-sizing: border-box;
-    box-sizing:        border-box;
-    border-left:#333300 2px solid;
-    border-bottom:#333300 1px solid;
-}
-#card, .content {
-    display:inline-block;
-    min-width:804px;
-    min-height:200px;
-    /* make the card un-selectable */
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-#card #front,
-#card #back,
-.content {
-    background:#fff;
-    min-width:400px;
-    min-height:200px;
-    display:inline-block;
-    position:relative;
-    border-radius:4px;
-}
-#card #front, #card #back {
-    position:absolute;
-}
-#card #front {
-    z-index:1;
-    background:url(../img/paper-texture.png) 0 0 no-repeat;
-}
-#card #back {
-    z-index:0;
-    right:4px;
-    background:url(../img/paper-texture.png) 0 0 no-repeat;
-}
-#card p {
-    margin:10px;
-    color:#000;
-    font-size:1.5em;
-    font-family:"Courier New", Courier, monospace;
-    font-weight:bold;
-    opacity:0.2;
-    filter:alpha(opacity=20);
-    text-align:center;
-}
-#card p.name {
-    opacity:0.2;
-    filter:alpha(opacity=20);
-    font-size:3em;
-    margin:25px 0 10px 0;
-}
-#card p.title {
-    font-size:14px;
-    margin:10px 0;
-}
-#card p.work,
-#card p.play {
-    display:inline-block;
-    margin-left:75px;
-}
-#card p.play {
-    float:right;
-    margin-left:0px;
-    margin-right:75px;
-}
-#card p.contact {
-}
-.overlay {
-    background:#333;
-    z-index:4;
-    position:relative;
-    opacity:.6;
-}
-.overlay p {
-    display:inline;
-    color:#fff;
-    opacity:1;
-}
+/* card text */
+    #card, #card p {
+        /* make the card un-selectable */
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    #card p {
+        margin:10px;
+        color:#000;
+        font-size:1.5em;
+        font-family:"Courier New", Courier, monospace;
+        font-weight:bold;
+        opacity:0.2;
+        filter:alpha(opacity=20);
+        text-align:center;
+        cursor:pointer;
+    }
+    #card p.name {
+        font-size:3em;
+        margin:25px 0 10px 0;
+    }
+    #card p.title {
+        font-size:14px;
+        margin:10px 0;
+    }
+    #card p.work,
+    #card p.play {
+        display:inline-block;
+        margin-left:75px;
+    }
+    #card p.play {
+        float:right;
+        margin-left:0px;
+        margin-right:75px;
+    }
+    #card p.contact {
+    }
+/* */
 
+/* overlay */
+    .overlay {
+        background:#111;
+        z-index:4;
+        position:absolute;
+        top:0;
+        margin:5px;
+        opacity:.6;
+        border:#777 3px solid;
+        border-radius:3px;
+    }
+    .overlay p {
+        display:inline;
+        color:#fff;
+        opacity:1;
+        margin-top:10%;
+        margin-left:10%;
+    }
 /* */
