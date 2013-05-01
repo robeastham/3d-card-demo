@@ -1,7 +1,7 @@
 var card = $('#card'),
     cardFront = $('#card #front'),
     cardBack = $('#card #back'),
-    flipper = $('#flipper'),
+    overlay = $('.overlay'),
     port = $(window);
 // end global variables
 
@@ -59,6 +59,7 @@ function flipCard() {
     }
 }
 function bufferCard() {
+    // keep card margins relative to screen size
     var minPortHeight = 320, // iOS height
         minPortWidth = 460, // iOS width
         minCardHeight = 200, // set min height for later calculations
@@ -89,22 +90,32 @@ function bufferCard() {
 }
 function showOverlay(event) {
     var $this = $(this),
-        topic = $this.attr('class');
+        topic = $this.attr('class'),
+        content = $('.overlay p.' + topic);
 
     console.log(topic),
+    overlay.height(port.height() -20),
+    overlay.width(port.width() - 20),
+    overlay.fadeToggle().addClass('visible'),
+    content.fadeToggle().addClass('visible'),
     event.stopPropagation();
 }
+
+overlay.click(function(event) {
+    overlay.fadeToggle(),
+    $('.overlay p.visible').fadeToggle().removeClass('visible'),
+    event.stopPropagation();
+}),
 $('#card p').click(showOverlay),
 // end global functions
 
-// keep card sized
 $(document).ready(function() {
     $('#card').fadeToggle(1200),
     bufferCard();
 });
 $(window).resize(function() { bufferCard(); });
 
-$('#card,.overlay').fadeToggle(20),
+$('#card,.overlay,.overlay p').fadeToggle(20), // hide card and overlay
 foldCard(), // fold cardBack against cardFront
 flipCard(), // FIXME: background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
