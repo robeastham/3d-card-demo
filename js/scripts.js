@@ -66,21 +66,21 @@ function flipCard() {
         card.transition({ // back-to-front flip
                 perspective: '1000px',
                 rotateY: '90deg'
-            }, 500, 'linear', showFront)
+            }, 250, 'linear', showFront)
             .transition({
                 perspective: '1000px',
                 rotateY: '0deg'
-            }, 500, 'linear')
+            }, 250, 'linear')
             .removeClass('flipped');
     } else {
         card.transition({ // front-to-back flip
                 perspective: '1000px',
                 rotateY: '90deg'
-            }, 500, 'linear', showBack)
+            }, 250, 'linear', showBack)
             .transition({
                 perspective: '1000px',
                 rotateY: '180deg'
-            }, 500, 'linear')
+            }, 250, 'linear')
             .addClass('flipped');
     }
 }

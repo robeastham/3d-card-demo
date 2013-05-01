@@ -6,6 +6,7 @@ html, body, div.wrapper, div.body {
 }
 body {
     padding:0;
+    background:#111;
 }
 div {
     margin:0;
@@ -13,7 +14,7 @@ div {
     background:transparent;
 }
 div.wrapper {
-    background:#333;
+    background:url(../img/fiber.png) 0 0 repeat;
     background-size:100%;
 }
 /* */
@@ -54,7 +55,7 @@ h1 {
     min-height:200px;
     display:inline-block;
     position:relative;
-    border-radius:5px;
+    border-radius:4px;
 }
 #card #front, #card #back {
     position:absolute;
@@ -82,7 +83,7 @@ h1 {
     opacity:0.2;
     filter:alpha(opacity=20);
     font-size:3em;
-    margin:25px 0 20px 0;
+    margin:25px 0 10px 0;
 }
 #card p:hover {
     opacity:.4;
@@ -90,7 +91,7 @@ h1 {
 }
 #card p.title {
     font-size:14px;
-    margin:20px 0 10px 0;
+    margin:20px 0 0 0;
 }
 #card p.work,
 #card p.play {
