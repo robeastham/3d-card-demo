@@ -69,7 +69,7 @@ h1 {
     background:url(../img/paper-texture.png) 0 0 no-repeat;
 }
 #card p {
-    margin:15px;
+    margin:10px;
     color:#000;
     font-size:1.5em;
     font-family:"Courier New", Courier, monospace;
@@ -86,7 +86,7 @@ h1 {
 }
 #card p.title {
     font-size:14px;
-    margin:20px 0 0 0;
+    margin:10px 0;
 }
 #card p.work,
 #card p.play {
