@@ -101,19 +101,16 @@ h1 {
 }
 #card p.contact {
 }
-.content {
-    background:transparent;
-    z-index:3;
+.overlay {
+    background:#333;
+    z-index:4;
     position:relative;
-    opacity:1;
+    opacity:.6;
 }
-.content p {
+.overlay p {
     display:inline;
     color:#fff;
+    opacity:1;
 }
-.content.overlay {
-    z-index:4;
-    background:#ccc333;
-    opacity:0;
-}
+
 /* */
