@@ -58,7 +58,7 @@ function flipCard() {
             .addClass('flipped');
     }
 }
-function resizeCard() {
+function bufferCard() {
     var minPortHeight = 320, // iOS height
         minPortWidth = 460, // iOS width
         minCardHeight = 200, // set min height for later calculations
@@ -84,11 +84,8 @@ function resizeCard() {
         top : cardOffset.top,
         width : cardWidth + 5
     }),
-    $('.overlay').fadeOut(),
 
-    $('.content').hide(),
-
-    console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
+    console.log('buffer resize! left = ' + bufferLeft + ' and top = ' + bufferTop);
 }
 function showOverlay(event) {
     var $this = $(this),
@@ -98,23 +95,20 @@ function showOverlay(event) {
     event.stopPropagation();
 }
 $('#card p').click(showOverlay),
-
-$('#card p:hover').transition({
-    opacity : '.4',
-    filter  : 'alpha(opacity=40)'
-}, 1000, 'linear'),
 // end global functions
 
 // keep card sized
-$(document).ready(function() { $('.body').transition({ opacity : 1 }); });
-$(window).resize(function() { resizeCard(); });
+$(document).ready(function() {
+    $('#card').fadeToggle(1200),
+    bufferCard();
+});
+$(window).resize(function() { bufferCard(); });
 
-$('.body').transition({ opacity : 0 }),
+$('#card,.overlay').fadeToggle(20),
 foldCard(), // fold cardBack against cardFront
 flipCard(), // FIXME: background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
-resizeCard(), // sets cardBuffer
+bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
-    .transition({ opacity : 1 }, 1500, 'linear'); // fade in
 
 $('.body').click(flipCard);
