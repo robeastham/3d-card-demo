@@ -116,7 +116,19 @@ function resizeCard() {
 
     console.log('resizeCard! cardHeight = ' + cardHeight + ' and cardWidth = ' + cardWidth);
 }
+function showOverlay(event) {
+    var $this = $(this),
+        topic = $this.attr('class');
 
+    console.log(topic),
+    event.stopPropagation();
+}
+$('#card p').click(showOverlay),
+
+$('#card p:hover').transition({
+    opacity : '.4',
+    filter  : 'alpha(opacity=40)'
+}, 1000, 'linear'),
 // end global functions
 
 // keep card sized
