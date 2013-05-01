@@ -91,7 +91,6 @@ h1 {
 #card p.title {
     font-size:14px;
     margin:20px 0 10px 0;
-    text-decoration:underline;
 }
 #card p.work,
 #card p.play {
@@ -104,7 +103,6 @@ h1 {
     margin-right:75px;
 }
 #card p.contact {
-    margin-bottom:45px;
 }
 .content {
     background:transparent;
