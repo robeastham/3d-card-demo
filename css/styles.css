@@ -13,7 +13,7 @@ div {
     background:transparent;
 }
 div.wrapper {
-    background:#999;
+    background:#333;
     background-size:100%;
 }
 /* */
@@ -69,28 +69,42 @@ h1 {
     background:url(../img/paper-texture.png) 0 0 no-repeat;
 }
 #card p {
-    margin:5px 0 5px 5px;
-    color:#f2f2f2;
-    text-shadow:1px -1px #999;
-    font-size:16px;
-    opacity:0.5;
-    filter:alpha(opacity=40);
+    margin:15px;
+    color:#000;
+    font-size:1.5em;
+    font-family:"Courier New", Courier, monospace;
+    font-weight:bold;
+    opacity:0.2;
+    filter:alpha(opacity=20);
+    text-align:center;
 }
 #card p.name {
-    font-size:2em;
-    font-weight:bold;
-    margin-top:12px;
+    opacity:0.2;
+    filter:alpha(opacity=20);
+    font-size:3em;
+    margin:25px 0 20px 0;
+}
+#card p:hover {
+    opacity:.4;
+    filter:alpha(opacity=40);
 }
 #card p.title {
-
+    font-size:14px;
+    margin:20px 0 10px 0;
+    text-decoration:underline;
 }
 #card p.work,
 #card p.play {
     display:inline-block;
+    margin-left:75px;
 }
 #card p.play {
     float:right;
-    margin-right:10px;
+    margin-left:0px;
+    margin-right:75px;
+}
+#card p.contact {
+    margin-bottom:45px;
 }
 .content {
     background:transparent;
