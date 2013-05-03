@@ -78,44 +78,44 @@ function bufferCard() {
 
     cardOffset = $('#card #front').offset(), // find coord's of card
 
-    $('.content').css({ // position and shape content
-        display : 'inline-block',
-        position : 'absolute',
-        left : cardOffset.left - 6,
-        top : cardOffset.top,
-        width : cardWidth + 5
-    }),
-
     console.log('buffer resize! left = ' + bufferLeft + ' and top = ' + bufferTop);
 }
 function showOverlay(event) {
     var $this = $(this),
-        topic = $this.attr('class'),
-        content = $('.overlay p.' + topic);
+        topic = $this.parent().attr('class'),
+        content = $('.overlay div.' + topic);
 
     console.log(topic),
-    overlay.height(port.height() -20),
-    overlay.width(port.width() - 20),
+    resizeOverlay(),
     overlay.fadeToggle().addClass('visible'),
     content.fadeToggle().addClass('visible'),
     event.stopPropagation();
 }
-
-overlay.click(function(event) {
+function hideOverlay(event) {
     overlay.fadeToggle(),
-    $('.overlay p.visible').fadeToggle().removeClass('visible'),
+    $('.overlay div.visible').fadeToggle().removeClass('visible'),
     event.stopPropagation();
-}),
-$('#card p').click(showOverlay),
+}
+function resizeOverlay() {
+    overlay.height(port.height() - 40),
+    overlay.width(port.width() - 20);
+}
+
 // end global functions
 
+// set global behaviors
 $(document).ready(function() {
-    $('#card').fadeToggle(1200),
-    bufferCard();
-});
-$(window).resize(function() { bufferCard(); });
+    bufferCard(), // calculate card margins
+    $('#card').fadeToggle(1200); // fade card in
+}),
+$(window).resize(function() {
+    bufferCard(), // recalculate card margins
+    resizeOverlay(); // recalculate overlay size
+}),
 
-$('#card,.overlay,.overlay p').fadeToggle(20), // hide card and overlay
+overlay.click(hideOverlay),
+$('#card p span').click(showOverlay),
+$('#card,.overlay,.overlay div').fadeToggle(20), // hide card and overlay
 foldCard(), // fold cardBack against cardFront
 flipCard(), // FIXME: background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
