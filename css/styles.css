@@ -21,9 +21,9 @@
 
 /* card */
     #card > div {
-       -moz-box-sizing:    border-box;
-       -webkit-box-sizing: border-box;
-        box-sizing:        border-box;
+       -moz-box-sizing:border-box;
+       -webkit-box-sizing:border-box;
+        box-sizing:border-box;
         border-left:#333300 2px solid;
         border-bottom:#333300 1px solid;
     }
@@ -32,23 +32,20 @@
         min-width:804px;
         min-height:200px;
     }
-    #card #front,
-    #card #back {
+    #front,
+    #back {
         background:#fff;
         min-width:400px;
         min-height:200px;
         display:inline-block;
-        position:relative;
+        position:absolute;
         border-radius:4px;
     }
-    #card #front, #card #back {
-        position:absolute;
-    }
-    #card #front {
+    #front {
         z-index:1;
         background:url(../img/paper-texture.png) 0 0 no-repeat;
     }
-    #card #back {
+    #back {
         z-index:0;
         right:4px;
         background:url(../img/paper-texture.png) 0 0 no-repeat;
@@ -56,7 +53,7 @@
 /* */
 
 /* card text */
-    #card, #card p {
+    #card, #card p, #card p span {
         /* make the card un-selectable */
         -webkit-touch-callout: none;
         -webkit-user-select: none;
@@ -69,11 +66,12 @@
         margin:10px;
         color:#000;
         font-size:1.5em;
-        font-family:"Courier New", Courier, monospace;
         font-weight:bold;
-        opacity:0.2;
-        filter:alpha(opacity=20);
+        opacity:0.4;
+        filter:alpha(opacity=40);
         text-align:center;
+    }
+    #card p span {
         cursor:pointer;
     }
     #card p.name {
@@ -100,20 +98,32 @@
 
 /* overlay */
     .overlay {
-        background:#111;
+        background:#f2f2f2;
         z-index:4;
         position:absolute;
         top:0;
         margin:5px;
-        opacity:.6;
+        padding-top:20px;
+        opacity:.9;
         border:#777 3px solid;
         border-radius:3px;
+        overflow:scroll;
     }
-    .overlay p {
-        display:inline;
-        color:#fff;
+    .overlay::-webkit-scrollbar {
+        display:none;
+    }
+    .overlay p,
+    .overlay h1 {
+        display:inline-block;
+        color:#333;
         opacity:1;
-        margin-top:10%;
-        margin-left:10%;
+        margin:10px 5%;
+    }
+    .overlay h1 {
+        margin:1%;
+        margin-left:5%;
+        font-size:18px;
+        display:block;
+        margin-bottom:0px;
     }
 /* */
