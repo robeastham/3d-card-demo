@@ -112,14 +112,17 @@ $(window).resize(function() {
     bufferCard(), // recalculate card margins
     resizeOverlay(); // recalculate overlay size
 }),
+$('.overlay div a').click(function(event) {
+    event.stopPropagation(); // pop bubble so clicking overlay links don't close overlay
+}),
 
 overlay.click(hideOverlay),
 $('#card p span').click(showOverlay),
 $('#card,.overlay,.overlay div').fadeToggle(20), // hide card and overlay
 foldCard(), // fold cardBack against cardFront
-flipCard(), // FIXME: background flip orients card halves
+flipCard(), // FIXME: initial background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
 bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
 
-$('.body').click(flipCard);
+$('#card').click(flipCard);
