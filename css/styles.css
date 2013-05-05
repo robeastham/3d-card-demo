@@ -102,12 +102,12 @@
         z-index:4;
         position:absolute;
         top:0;
-        margin:5px;
-        padding-top:20px;
         opacity:.9;
         border:#777 3px solid;
         border-radius:3px;
         overflow:scroll;
+        max-height:600px;
+        max-width:1200px;
     }
     .overlay::-webkit-scrollbar {
         display:none;

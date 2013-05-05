@@ -75,6 +75,12 @@ function bufferCard() {
         marginTop : bufferTop,
         marginLeft : bufferLeft
     }),
+    overlay.css({
+        width : cardWidth + 20,
+        height : cardHeight + 20,
+        marginTop : bufferTop - 10,
+        marginLeft : bufferLeft - 10
+    }),
 
     cardOffset = $('#card #front').offset(), // find coord's of card
 
@@ -86,7 +92,6 @@ function showOverlay(event) {
         content = $('.overlay div.' + topic);
 
     console.log(topic),
-    resizeOverlay(),
     overlay.fadeToggle().addClass('visible'),
     content.fadeToggle().addClass('visible'),
     event.stopPropagation();
@@ -96,11 +101,6 @@ function hideOverlay(event) {
     $('.overlay div.visible').fadeToggle().removeClass('visible'),
     event.stopPropagation();
 }
-function resizeOverlay() {
-    overlay.height(port.height() - 40),
-    overlay.width(port.width() - 20);
-}
-
 // end global functions
 
 // set global behaviors
