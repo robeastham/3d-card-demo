@@ -109,8 +109,7 @@ $(document).ready(function() {
     $('#card').fadeToggle(1200); // fade card in
 }),
 $(window).resize(function() {
-    bufferCard(), // recalculate card margins
-    resizeOverlay(); // recalculate overlay size
+    bufferCard(); // recalculate card margins
 }),
 $('#card #back p,#card #back p,.overlay a').click(function(event) {
     event.stopPropagation(); // pop bubble so clicking overlay links don't close overlay
