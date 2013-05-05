@@ -140,3 +140,11 @@
         margin-bottom:0px;
     }
 /* */
+
+/* IE Specific */
+.ie7 #card #back,
+.ie8 #card #back,
+.ie9 #card #back {
+    display:none;
+}
+/* * /

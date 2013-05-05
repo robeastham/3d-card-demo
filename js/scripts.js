@@ -124,4 +124,7 @@ flipCard(), // FIXME: flip it right way around again
 bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
 
-$('#card').click(flipCard);
+$('#card').click(flipCard),
+$('body.ie7 #card,body.ie8 #card,body.ie9 #card,').click(function() {
+    return false; // do nothing!
+});
