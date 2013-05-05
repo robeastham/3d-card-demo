@@ -94,6 +94,17 @@
     }
     #card p.contact {
     }
+    #card #back p span {
+        width:360px;
+        height:80px;
+        display:inline-block;
+    }
+    #card p.twitter span {
+        background:url(../img/twitter-handle.png) 0 0 no-repeat;
+    }
+    #card p.google-voice span {
+        background:url(../img/google-voice.png) 0 0 no-repeat;
+    }
 /* */
 
 /* overlay */
