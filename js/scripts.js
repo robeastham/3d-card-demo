@@ -115,6 +115,7 @@ $('#card #back p,#card #back p,.overlay a').click(function(event) {
     event.stopPropagation(); // pop bubble so clicking overlay links don't close overlay
 }),
 
+$('body').hide(),
 overlay.click(hideOverlay),
 $('#card #front p span').click(showOverlay),
 $('#card,.overlay,.overlay div').fadeToggle(20), // hide card and overlay
@@ -123,7 +124,7 @@ flipCard(), // FIXME: initial background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
 bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
-
+$('body').show(),
 $('#card').click(flipCard),
 $('body.ie7 #card,body.ie8 #card,body.ie9 #card,').click(function() {
     return false; // do nothing!
