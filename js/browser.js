@@ -30,7 +30,7 @@ var uA = navigator.userAgent,
 
 // mobile layout rendering
 function showWarning() {
-    $('p.mobile').slideDown(1000);
+    $('p.mobile').show();
 }
 function hideWarning() {
     $('p.mobile').delay(2000).slideUp(1000);

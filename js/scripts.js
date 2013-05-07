@@ -114,7 +114,7 @@ function hideOverlay(event) {
 
 // set global behaviors
 $(document).ready(function() {
-    $('body').show(),
+    $('.wrapper').show(),
     bufferCard(), // calculate card margins
     $('#card').fadeToggle(1200); // fade card in
 }),
@@ -125,7 +125,6 @@ $('#card #back p,#card #back p,.overlay a').click(function(event) {
     event.stopPropagation(); // pop bubble so clicking overlay links don't close overlay
 }),
 
-$('body').hide(),
 overlay.click(hideOverlay),
 $('#card #front p span').click(showOverlay),
 $('#card,.overlay,.overlay div').fadeToggle(20), // hide card and overlay

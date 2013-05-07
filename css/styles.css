@@ -16,6 +16,7 @@
     div.wrapper {
         background:url(../img/fiber.png) 0 0 repeat;
         background-size:100%;
+        display:none;
     }
 /* */
 
