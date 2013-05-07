@@ -1,5 +1,5 @@
 var uA = navigator.userAgent,
-    body = $('.body'),
+    body = $('div.body'),
     card = $('#card'),
     mobileWarning = '<p class="mobile">Turn your device sideways for the best experience</p>';
 
@@ -36,14 +36,6 @@ function hideWarning() {
     $('p.mobile').delay(2000).slideUp(1000);
 }
 
-if (body.hasClass('mobile') && body.width()<400) { // if mobile & portrait
-    console.log('uh oh its mobile'),
-    body.prepend(mobileWarning),
-    showWarning(); // show warning
-} else {
-    // do nothing
-}
-
 // if overlay is open on rotate, disable ridiculous auto-zoom on iOS
 if (body.hasClass('mobile')) {
     var viewportmeta = document.querySelector('meta[name="viewport"]');
@@ -55,6 +47,15 @@ if (body.hasClass('mobile')) {
     }
 }
 
+    if (body.hasClass('mobile') && $(window).width()<400) { // if mobile & portrait
+        console.log('uh oh its mobile'),
+        body.prepend(mobileWarning),
+        showWarning(); // show warning
+    } else {
+        // do nothing
+    }
+
 $(document).ready(function() {
+
     hideWarning();
 });

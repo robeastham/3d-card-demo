@@ -1,4 +1,5 @@
-var card = $('#card'),
+var body = $('.body'),
+    card = $('#card'),
     cardFront = $('#card #front'),
     cardBack = $('#card #back'),
     overlay = $('.overlay'),
@@ -101,13 +102,13 @@ function showOverlay(event) {
         content = $('.overlay div.' + topic);
 
     console.log(topic),
-    overlay.fadeToggle().addClass('visible'),
-    content.fadeToggle().addClass('visible'),
+    overlay.fadeIn().addClass('visible'),
+    content.fadeIn().addClass('visible'),
     event.stopPropagation();
 }
 function hideOverlay(event) {
-    overlay.fadeToggle(),
-    $('.overlay div.visible').fadeToggle().removeClass('visible'),
+    overlay.fadeOut(),
+    $('.overlay div.visible').fadeOut().removeClass('visible'),
     event.stopPropagation();
 }
 // end global functions
@@ -116,7 +117,7 @@ function hideOverlay(event) {
 $(document).ready(function() {
     $('.wrapper').show(),
     bufferCard(), // calculate card margins
-    $('#card').fadeToggle(1200); // fade card in
+    $('#card').fadeIn(1200); // fade card in
 }),
 $(window).resize(function() {
     bufferCard(); // recalculate card margins
@@ -127,7 +128,7 @@ $('#card #back p,#card #back p,.overlay a').click(function(event) {
 
 overlay.click(hideOverlay),
 $('#card #front p span').click(showOverlay),
-$('#card,.overlay,.overlay div').fadeToggle(20), // hide card and overlay
+$('#card,.overlay,.overlay div').hide(), // hide card and overlay
 foldCard(), // fold cardBack against cardFront
 flipCard(), // FIXME: initial background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
