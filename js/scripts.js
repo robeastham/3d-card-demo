@@ -74,13 +74,22 @@ function bufferCard() {
     card.css({
         marginTop : bufferTop,
         marginLeft : bufferLeft
-    }),
-    overlay.css({
-        width : cardWidth + 20,
-        height : cardHeight + 20,
-        marginTop : bufferTop - 10,
-        marginLeft : bufferLeft - 10
-    }),
+    })
+
+    if (body.hasClass('mobile')) {
+        overlay.css({
+            width : portWidth,
+            height : portHeight,
+            margin : 0
+        });
+    } else {
+        overlay.css({
+            width : cardWidth + 20,
+            height : cardHeight + 20,
+            marginTop : bufferTop - 10,
+            marginLeft : bufferLeft - 10
+        });
+    }
 
     cardOffset = $('#card #front').offset(), // find coord's of card
 
@@ -105,6 +114,7 @@ function hideOverlay(event) {
 
 // set global behaviors
 $(document).ready(function() {
+    $('body').show(),
     bufferCard(), // calculate card margins
     $('#card').fadeToggle(1200); // fade card in
 }),
@@ -124,8 +134,7 @@ flipCard(), // FIXME: initial background flip orients card halves
 flipCard(), // FIXME: flip it right way around again
 bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
-$('body').show(),
-$('#card').click(flipCard),
+          .click(flipCard),
 $('body.ie7 #card,body.ie8 #card,body.ie9 #card').click(function() {
-    return false; // do nothing!
+    return false; // FIXME: disable flip for IE
 });

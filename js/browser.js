@@ -30,10 +30,10 @@ var uA = navigator.userAgent,
 
 // mobile layout rendering
 function showWarning() {
-    $('p.mobile').slideDown(1500);
+    $('p.mobile').slideDown(1000);
 }
 function hideWarning() {
-    $('p.mobile').delay(3000).slideUp(1000);
+    $('p.mobile').delay(2000).slideUp(1000);
 }
 
 if (body.hasClass('mobile') && body.width()<400) { // if mobile & portrait
@@ -42,6 +42,17 @@ if (body.hasClass('mobile') && body.width()<400) { // if mobile & portrait
     showWarning(); // show warning
 } else {
     // do nothing
+}
+
+// if overlay is open on rotate, disable ridiculous auto-zoom on iOS
+if (body.hasClass('mobile')) {
+    var viewportmeta = document.querySelector('meta[name="viewport"]');
+    if (viewportmeta) {
+        viewportmeta.content = 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0';
+        document.body.addEventListener('gesturestart', function () {
+            viewportmeta.content = 'width=device-width, minimum-scale=0.25, maximum-scale=1.6';
+        }, false);
+    }
 }
 
 $(document).ready(function() {
