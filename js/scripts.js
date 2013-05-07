@@ -126,6 +126,6 @@ bufferCard(), // sets cardBuffer
 $('#card').css({ transformOrigin : '25%' }) // set origin for flip animation
 $('body').show(),
 $('#card').click(flipCard),
-$('body.ie7 #card,body.ie8 #card,body.ie9 #card,').click(function() {
+$('body.ie7 #card,body.ie8 #card,body.ie9 #card').click(function() {
     return false; // do nothing!
 });
