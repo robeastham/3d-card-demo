@@ -1,5 +1,7 @@
 var uA = navigator.userAgent,
-    body = $('body');
+    body = $('.body'),
+    card = $('#card'),
+    mobileWarning = '<p class="mobile">Turn your device sideways for the best experience</p>';
 
 // start QAD browser detection
     if (uA.match(/Firefox\/.*/)) {
@@ -27,18 +29,21 @@ var uA = navigator.userAgent,
 // end browser detection
 
 // mobile layout rendering
-
-if (body.hasClass('mobile')) {
-    var mobileWarning = '<p class="mobile">Turn your device sideways for the best experience</p>';
-
-    $('.body').prepend(mobileWarning),
-    $('p.mobile').fadeOut();
-};
-
+function showWarning() {
+    $('p.mobile').slideDown(1500);
+}
 function hideWarning() {
-    $('p.mobile').slideUp(1500);
+    $('p.mobile').delay(3000).slideUp(1000);
+}
+
+if (body.hasClass('mobile') && body.width()<400) { // if mobile & portrait
+    console.log('uh oh its mobile'),
+    body.prepend(mobileWarning),
+    showWarning(); // show warning
+} else {
+    // do nothing
 }
 
 $(document).ready(function() {
-    $('p.mobile').fadeIn(2000,hideWarning);
+    hideWarning();
 });
